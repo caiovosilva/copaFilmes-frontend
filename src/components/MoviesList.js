@@ -13,14 +13,13 @@ export default class MoviesList extends Component {
     }
 
     componentDidMount() {  
-         axios.get('https://copafilmes.azurewebsites.net/api/filmes')
-        // axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(res => {
+         axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
+        .then((res) => {
             this.setState({
                 movies: res.data
             })
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error)
         })
     }
@@ -52,8 +51,13 @@ export default class MoviesList extends Component {
                 </div>
                 <div className="movies">
                     <CardGroup>
-                        <Movie></Movie>
-                        <Movie></Movie>
+                        {this.state.movies.map(item => {
+                            return <Movie
+                                key={item.Id} 
+                                titulo={item.Titulo}
+                                ano={item.Ano}
+                                />
+                        })}
                     </CardGroup>
 
                 </div>
