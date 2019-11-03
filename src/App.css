@@ -1,13 +1,6 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #A9A7A8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,6 +10,19 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.Title {
+  color: #8A8A8A;
+}
+
+.headerr {
+  background-color: pink;
+}
+
+.jumbotron {
+  background-color: #6E6E6E !important;
+  font-weight: bold;
+  width: 80%;
+  top: 0;
+  position: fixed;
+  padding-top:20em;
 }
