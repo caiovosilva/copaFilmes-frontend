@@ -4,6 +4,8 @@ import Default from './components/Default'
 import MoviesList from './components/MoviesList'
 import Result from './components/Result'
 import { Switch, Route } from 'react-router-dom'
+import {Jumbotron, Button, Container, Col, Row} from 'react-bootstrap'
+
 // const App = () => {
 //   return (
 //     <Jumbotron>
@@ -21,6 +23,13 @@ function App() {
   return (
     <div className="App">
       <React.Fragment>
+        <Jumbotron fluid bsClass="jumbotron">
+            <h6 className="Title">CAMPEONATO DE FILMES</h6>
+            <p>
+            Fase de Seleção
+            </p>
+        </Jumbotron>
+        
         <Switch>
           <Route exact path="/" component={MoviesList}></Route>
           <Route path="/result" component={Result}></Route>
