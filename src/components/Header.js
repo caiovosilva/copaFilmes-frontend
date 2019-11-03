@@ -6,7 +6,7 @@ export default class Header extends Component {
         //  const { id, titulo, ano } = this.props.movie
         return (
             <div>
-                <Jumbotron fluid bsClass="jumbotron">
+                <Jumbotron fluid className="jumbotron">
                     <h6 className="Header-grey">CAMPEONATO DE FILMES</h6>
                     <h2>{this.props.subTitle}</h2>
                     <h6 className="Header-grey Header-bold">__</h6>

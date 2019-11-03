@@ -12,12 +12,16 @@ export default class MoviesList extends Component {
         movies: []
     }
 
-    componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
-            console.log(res)
+    componentDidMount() {  
+         axios.get('https://copafilmes.azurewebsites.net/api/filmes')
+        // axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(res => {
             this.setState({
-                persons: res.data
+                movies: res.data
             })
+        })
+        .catch(error => {
+            console.log(error)
         })
     }
 
@@ -47,10 +51,14 @@ export default class MoviesList extends Component {
                     </div>  
                 </div>
                 <div className="movies">
-                    filmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees
+                    <CardGroup>
+                        <Movie></Movie>
+                        <Movie></Movie>
+                    </CardGroup>
+
                 </div>
                 
-                {/* <Movie></Movie> */}
+
                 {/* {(value) => {
                   return value.products.map(product => {
                     return <Product key={product.id} product={product} />

@@ -15,35 +15,6 @@ function App() {
           <Route component={Default}></Route>
         </Switch>
       </React.Fragment>
-      
-      {/* <Container>
-        <Row>
-          <Col sm={1}>1</Col>
-          <Col sm={3}>2</Col>
-          <Col sm={1}>3</Col>
-          <Col sm={6}>4</Col>
-          <Col sm={1}>5</Col>
-        </Row>
-      </Container> */}
-
-
-      
-
-
-
-
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
     </div>
   );
 }
