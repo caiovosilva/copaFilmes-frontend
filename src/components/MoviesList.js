@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import Movie from './Movie'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import {Jumbotron, Button, Container, Col, Row, CardGroup} from 'react-bootstrap'
+import {Jumbotron, Button, CardDeck, Row, Col, Card, CardGroup} from 'react-bootstrap'
 import axios from 'axios'
 import Header from './Header'
-
 
 export default class MoviesList extends Component {
     state = {
@@ -25,6 +24,15 @@ export default class MoviesList extends Component {
     }
 
     render() {
+        let cards;
+        cards = Object.values(this.state.movies).map( card => (
+                <Movie style={{flex:'4'}}
+                    key={card.id} 
+                    movie={card}
+                    // clicked={() => this.showItemDetailHandler(card.id)} colocar aqui depois a função para selecionar os filmes
+                />
+            ) 
+        )
         return (
             <div className="container">
                 <div className="MovieList-header">
@@ -50,24 +58,18 @@ export default class MoviesList extends Component {
                     </div>  
                 </div>
                 <div className="movies">
-                    <CardGroup>
-                        {this.state.movies.map(item => {
-                            return <Movie
-                                key={item.Id} 
-                                titulo={item.Titulo}
-                                ano={item.Ano}
+                    <Row>
+                        {this.state.movies.map( item => 
+                            <Col sm="3">
+                                <Movie
+                                    key={item.id}
+                                    movie={item} 
                                 />
-                        })}
-                    </CardGroup>
-
+                            </Col>
+                            
+                        )}
+                    </Row>
                 </div>
-                
-
-                {/* {(value) => {
-                  return value.products.map(product => {
-                    return <Product key={product.id} product={product} />
-                  })
-                }} */}
             </div>
         )
     }

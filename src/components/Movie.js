@@ -1,23 +1,20 @@
 import {Jumbotron, Button, Card} from 'react-bootstrap';
-
+import '../App.css'
 import React, { Component } from 'react'
 
 export default class Movie extends Component {
+    state = {
+        movie: null
+    }
     render() {
-        // if(this.props.movie)
-        //     const { id, titulo, ano } = this.props.movie
+        const movie = this.props.movie
+        console.log(movie)
         return (
-            <Card style={{ width: '18rem' }}>
-            <Card.Body>
-                <Card.Title>{this.props.Titulo}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{this.props.Ano}</Card.Subtitle>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-                </Card.Text>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
+            <Card className="flex-grow">
+                <Card.Body>
+                <Card.Title>{movie.titulo}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{movie.ano}</Card.Subtitle>
+                </Card.Body>
             </Card>
         )
     }
