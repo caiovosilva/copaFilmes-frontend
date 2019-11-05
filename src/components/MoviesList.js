@@ -14,15 +14,36 @@ export default class MoviesList extends Component {
 
     state = {
         movies: [],
-        cardCounter: 0
+        cardCounter: 0,
+        moviesSelectedCounter: 0,
+        moviesSelected: []
     }
 
     cardClicked = (id) => {
-        console.log('clickity: ' + id);
+        const moviesSelected = this.state.moviesSelected
+        let movie = moviesSelected.find(obj => obj.id === id)
+        if(movie === undefined) {
+            movie = this.state.movies.find(obj => obj.id === id)
+            if(movie != undefined) {
+                if(moviesSelected.length < 8) {
+                    moviesSelected.push(movie)
+                    //nao marcar card
+                }
+                else
+                    alert('Você já selecionou 8 filmes!')
+            }
+        }
+        else {
+            this.setState({ 
+                moviesSelected: moviesSelected.filter(obj => obj.id != id)
+            });
+        }
+        
     }
 
     componentDidMount() {  
-         axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
+        //  axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
+        axios.get('http://localhost:49274/api/movies')
         .then((res) => {
             this.setState({
                 movies: res.data
@@ -48,7 +69,7 @@ export default class MoviesList extends Component {
                             Selecionados
                         </div>
                         <div>
-                            0 de 8 Filmes
+                            {this.state.moviesSelected.length} de 8 Filmes
                         </div>
                     </div>
                     <div className="MovieList-title-spacer"></div>
