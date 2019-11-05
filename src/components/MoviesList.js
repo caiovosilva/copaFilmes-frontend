@@ -24,15 +24,6 @@ export default class MoviesList extends Component {
     }
 
     render() {
-        let cards;
-        cards = Object.values(this.state.movies).map( card => (
-                <Movie style={{flex:'4'}}
-                    key={card.id} 
-                    movie={card}
-                    // clicked={() => this.showItemDetailHandler(card.id)} colocar aqui depois a função para selecionar os filmes
-                />
-            ) 
-        )
         return (
             <div className="container">
                 <div className="MovieList-header">
@@ -53,7 +44,7 @@ export default class MoviesList extends Component {
                     <div className="MovieList-title-spacer"></div>
                     <div className="MovieList-title-link">
                         <Link to="/result" className="ml-auto">
-                            <Button>GERAR MEU CAMPEONATO</Button>
+                            <Button fluid>GERAR MEU CAMPEONATO</Button>
                         </Link>
                     </div>  
                 </div>
@@ -63,14 +54,19 @@ export default class MoviesList extends Component {
                             <Col sm="3">
                                 <Movie
                                     key={item.id}
-                                    movie={item} 
+                                    movie={item}
+                                    clicked={() => this.movieClicked(item.id)}
                                 />
                             </Col>
-                            
                         )}
                     </Row>
                 </div>
             </div>
         )
     }
+    
+}
+
+const movieClicked = (id) => {
+    console.log(id)
 }

@@ -10,7 +10,7 @@ export default class Movie extends Component {
         const movie = this.props.movie
         console.log(movie)
         return (
-            <Card className="flex-grow">
+            <Card>
                 <Card.Body>
                 <Card.Title>{movie.titulo}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{movie.ano}</Card.Subtitle>

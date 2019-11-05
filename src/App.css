@@ -21,7 +21,7 @@
 }
 
 .container {
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -38,14 +38,16 @@
 }
 
 .container div {
-  border: 1px #ccc solid;
+  /* border: 1px #ccc solid; */
   padding: 10px;
 }
 
+.MovieList-title-counter {
+  flex: 1
+}
 .MovieList-title-link {
-  flex: 1;
-  text-transform: uppercase;
-  /* align-self: flex-start; */
+  flex: 1.1;
+  align-self: center;
 }
 
 .MovieList-title-link-button {
@@ -53,5 +55,17 @@
 }
 
 .MovieList-title-spacer {
-  flex: 2.7;
+  flex: 3;
+}
+
+.btn {
+  border-radius: 0px !important;
+}
+
+
+
+.card {
+  max-height: 140px;
+  border-radius: 0px !important;
+  background-color: gray !important;
 }
