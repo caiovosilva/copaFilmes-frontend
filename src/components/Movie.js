@@ -8,6 +8,7 @@ export default class Movie extends Component {
     constructor( props ){
         super( props );
         this.handleClick = this.handleClick.bind(this);
+        this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
     }
     state = {
         isSelected: false,
@@ -16,10 +17,15 @@ export default class Movie extends Component {
     }
 
     handleClick() {
+        this.props.onClick(this.state.movie.id, this.changeBackgroundColor);
+    }
+    
+    changeBackgroundColor() {
         this.setState(prevState => ({
-            backgroundColor: prevState.backgroundColor === 'white' ? 'grey' : 'white'
+            backgroundColor: prevState.backgroundColor === 'white' 
+                ? 'grey' 
+                : 'white'
         }));
-        this.props.onClick(this.state.movie.id);
     }
 
     render() {   

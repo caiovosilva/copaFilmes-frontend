@@ -19,24 +19,27 @@ export default class MoviesList extends Component {
         moviesSelected: []
     }
 
-    cardClicked = (id) => {
+    cardClicked = (id, callBack) => {
         const moviesSelected = this.state.moviesSelected
         let movie = moviesSelected.find(obj => obj.id === id)
         if(movie === undefined) {
             movie = this.state.movies.find(obj => obj.id === id)
-            if(movie != undefined) {
+            if(movie !== undefined) {
                 if(moviesSelected.length < 8) {
-                    moviesSelected.push(movie)
-                    //nao marcar card
+                    callBack()
+                    this.setState(prevState => ({
+                        moviesSelected: [...prevState.moviesSelected, movie]
+                    }))
                 }
                 else
                     alert('Você já selecionou 8 filmes!')
             }
         }
         else {
+            callBack()
             this.setState({ 
-                moviesSelected: moviesSelected.filter(obj => obj.id != id)
-            });
+                moviesSelected: moviesSelected.filter(obj => obj.id !== id)
+            })
         }
         
     }
