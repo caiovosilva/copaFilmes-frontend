@@ -2,13 +2,23 @@ import React, { Component } from 'react'
 import Movie from './Movie'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import {Jumbotron, Button, CardDeck, Row, Col, Card, CardGroup} from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
 import Header from './Header'
 
 export default class MoviesList extends Component {
+    constructor(props) {
+        super(props);
+        this.cardClicked = this.cardClicked.bind(this);
+    }
+
     state = {
-        movies: []
+        movies: [],
+        cardCounter: 0
+    }
+
+    cardClicked = (id) => {
+        console.log('clickity: ' + id);
     }
 
     componentDidMount() {  
@@ -44,18 +54,18 @@ export default class MoviesList extends Component {
                     <div className="MovieList-title-spacer"></div>
                     <div className="MovieList-title-link">
                         <Link to="/result" className="ml-auto">
-                            <Button fluid>GERAR MEU CAMPEONATO</Button>
+                            <Button fluid="true">GERAR MEU CAMPEONATO</Button>
                         </Link>
                     </div>  
                 </div>
                 <div className="movies">
                     <Row>
                         {this.state.movies.map( item => 
-                            <Col sm="3">
+                            <Col sm="3" key={item.id}>
                                 <Movie
                                     key={item.id}
                                     movie={item}
-                                    clicked={() => this.movieClicked(item.id)}
+                                    onClick={this.cardClicked}
                                 />
                             </Col>
                         )}
@@ -64,9 +74,5 @@ export default class MoviesList extends Component {
             </div>
         )
     }
-    
 }
 
-const movieClicked = (id) => {
-    console.log(id)
-}
