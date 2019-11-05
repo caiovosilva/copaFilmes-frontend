@@ -2,34 +2,35 @@ import {Card} from 'react-bootstrap';
 import '../App.css'
 import React, { Component } from 'react'
 
-const movieStyle = {
-    maxHeight: '140px',
-    borderRadius: '0px',
-    backgroundColor: 'gray',
-    // backgroundImage: 'url(' + imgUrl + ')',
-};
+
 
 export default class Movie extends Component {
+    constructor( props ){
+        super( props );
+        this.handleClick = this.handleClick.bind(this);
+    }
     state = {
-        movie: null
+        isSelected: false,
+        movie: this.props.movie,
+        backgroundColor: 'white'
     }
 
     handleClick() {
-        this.props.onItemClick(this.state.movie.id);
+        this.setState(prevState => ({
+            backgroundColor: prevState.backgroundColor === 'white' ? 'grey' : 'white'
+        }));
+        this.props.onClick(this.state.movie.id);
     }
-    
-    componentWillMount() {
-        this.setState({
-            movie: this.props.movie
-        })
-    }
-    // cardClicked: this.props.onItemClick
 
-    render() {
-        
+    render() {   
         return (
             <a style={{ cursor: 'pointer' }} onClick={this.handleClick}>
-                <Card style={movieStyle}>
+                <Card style={{
+                        width: `${this.props.value}%`,
+                        maxHeight: '140px',
+                        borderRadius: '0px',
+                        backgroundColor: this.state.backgroundColor,
+                    }}>
                     <Card.Body >
                     <Card.Title>{this.state.movie.titulo}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.state.movie.ano}</Card.Subtitle>
