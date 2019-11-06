@@ -38,8 +38,9 @@ export default class Movie extends Component {
                         maxHeight: '140px',
                         borderRadius: '0px',
                         backgroundColor: this.state.backgroundColor,
-                    }}>
-                    <Card.Body >
+                    }}
+                >
+                    <Card.Body>
                     <Card.Title>{this.state.movie.titulo}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.state.movie.ano}</Card.Subtitle>
                     </Card.Body>

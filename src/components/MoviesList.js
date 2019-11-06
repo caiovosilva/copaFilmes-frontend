@@ -88,7 +88,7 @@ export default class MoviesList extends Component {
                                 }}
                                 className="ml-auto"
                             >
-                                <Button fluid="true">GERAR MEU CAMPEONATO</Button>
+                                <Button fluid="true" variant="dark">GERAR MEU CAMPEONATO</Button>
                             </Link>
                         </div>  
                     </div>
