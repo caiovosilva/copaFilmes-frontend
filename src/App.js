@@ -11,7 +11,10 @@ function App() {
       <React.Fragment>
         <Switch>
           <Route exact path="/" component={MoviesList}></Route>
-          <Route path="/result" component={Result}></Route>
+          <Route 
+            path="/result" 
+            render={(props) => <Result {...props} />}
+          />
           <Route component={Default}></Route>
         </Switch>
       </React.Fragment>

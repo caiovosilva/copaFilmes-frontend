@@ -15,20 +15,19 @@ export default class MoviesList extends Component {
     state = {
         movies: [],
         cardCounter: 0,
-        moviesSelectedCounter: 0,
-        moviesSelected: []
+        selectedMovies: []
     }
 
     cardClicked = (id, callBack) => {
-        const moviesSelected = this.state.moviesSelected
-        let movie = moviesSelected.find(obj => obj.id === id)
+        const selectedMovies = this.state.selectedMovies
+        let movie = selectedMovies.find(obj => obj.id === id)
         if(movie === undefined) {
             movie = this.state.movies.find(obj => obj.id === id)
             if(movie !== undefined) {
-                if(moviesSelected.length < 8) {
+                if(selectedMovies.length < 8) {
                     callBack()
                     this.setState(prevState => ({
-                        moviesSelected: [...prevState.moviesSelected, movie]
+                        selectedMovies: [...prevState.selectedMovies, movie]
                     }))
                 }
                 else
@@ -38,7 +37,7 @@ export default class MoviesList extends Component {
         else {
             callBack()
             this.setState({ 
-                moviesSelected: moviesSelected.filter(obj => obj.id !== id)
+                selectedMovies: selectedMovies.filter(obj => obj.id !== id)
             })
         }
         
@@ -72,12 +71,20 @@ export default class MoviesList extends Component {
                             Selecionados
                         </div>
                         <div>
-                            {this.state.moviesSelected.length} de 8 Filmes
+                            {this.state.selectedMovies.length} de 8 Filmes
                         </div>
                     </div>
                     <div className="MovieList-title-spacer"></div>
                     <div className="MovieList-title-link">
-                        <Link to="/result" className="ml-auto">
+                        <Link
+                            to={{
+                                pathname: '/result',
+                                state: {
+                                    movies: this.state.selectedMovies
+                                }
+                            }}
+                            className="ml-auto"
+                        >
                             <Button fluid="true">GERAR MEU CAMPEONATO</Button>
                         </Link>
                     </div>  
