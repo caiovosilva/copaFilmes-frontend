@@ -3,6 +3,9 @@ import axios from 'axios'
 import Header from './Header'
 import WinnersCard from './WinnersCard'
 import LoadingOverlay from 'react-loading-overlay';
+import { Link } from 'react-router-dom'
+import '../App.css'
+import { Button } from 'react-bootstrap'
 
 export default class Result extends Component {
     state = {
@@ -39,6 +42,9 @@ export default class Result extends Component {
                             <WinnersCard position={'1º'} title={this.state.winnerTitle} />
                             <WinnersCard position={'2º'} title={this.state.secondTitle} />
                     </div>
+                    <Link to='/' className="ml-auto">
+                        <Button fluid="true" variant="dark">VOLTAR</Button>
+                    </Link>
                 </div>
             </LoadingOverlay>
         )
