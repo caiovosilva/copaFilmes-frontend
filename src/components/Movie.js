@@ -31,7 +31,9 @@ export default class Movie extends Component {
     render() {   
         return (
             <a style={{ cursor: 'pointer' }} onClick={this.handleClick}>
-                <Card style={{
+                <Card 
+                    className="disable-selection"
+                    style={{
                         width: `${this.props.value}%`,
                         maxHeight: '140px',
                         borderRadius: '0px',
