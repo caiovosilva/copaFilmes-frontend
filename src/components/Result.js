@@ -8,8 +8,7 @@ export default class Result extends Component {
 
     componentDidMount () {
         const { movies } = this.props.location.state
-        //  axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
-        axios.post('http://localhost:49274/api/championship', movies)
+        axios.post('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/championship', movies)
         .then((winners) => {
             console.log(winners)
             // this.setState({

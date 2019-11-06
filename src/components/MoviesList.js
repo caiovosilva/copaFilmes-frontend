@@ -44,8 +44,7 @@ export default class MoviesList extends Component {
     }
 
     componentDidMount() {  
-        //  axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
-        axios.get('http://localhost:49274/api/movies')
+        axios.get('https://gjnskjqty1.execute-api.sa-east-1.amazonaws.com/Prod/api/movies')
         .then((res) => {
             this.setState({
                 movies: res.data
